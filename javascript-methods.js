@@ -89,7 +89,12 @@ Array.prototype.myLastIndexOf = function(searchElement) {
 
 // KEYS //
 Object.myKeys = function(object) {
-  // Place your code here.
+    let res=[];
+    for (var key in object) {
+        if (key=="myKeys") continue; // "myKeys" key included by default
+        res.push(key);
+    }    
+    return res;
 };
 
 // VALUES //
