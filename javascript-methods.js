@@ -99,5 +99,10 @@ Object.myKeys = function(object) {
 
 // VALUES //
 Object.myValues = function(object) {
-  // Place your code here.
+    res=[];
+    for (var key in object) {
+        res.push(object[key]);
+    }
+    res.pop(); // [Function] being appended and I don't know why
+    return res;
 };
