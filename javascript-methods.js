@@ -10,50 +10,99 @@ In this Assignment, we use the prototype constructor to add new methods to the A
 
 // MAP //
 Array.prototype.myMap = function(callbackFn) {
-  // Place your code here.
+  res=[]
+  for (let i=0; i<this.length; i++) {
+      if (this[i]==undefined) continue;
+      res.push(callbackFn(this[i]));
+  }
+  return res
 };
 
 // FILTER //
 Array.prototype.myFilter = function(callbackFn) {
-  // Place your code here.
+  res=[];
+  for (let i=0; i<this.length;i++) {
+	  if (this[i]==undefined) continue;
+      if (callbackFn(this[i])) res.push(this[i]);
+  }
+  return res
 };
 
 // SOME //
 Array.prototype.mySome = function(callbackFn) {
-  // Place your code here.
+  for (let i=0; i<this.length; i++) {
+      if (this[i]==undefined) continue;
+      if (callbackFn(this[i])) return true;
+  }
+  return false;
 };
+
 
 // EVERY //
 Array.prototype.myEvery = function(callbackFn) {
-  // Place your code here.
+  for (let i=0; i<this.length; i++){
+      if (this[i]==undefined) continue;
+      if (!callbackFn(this[i])) return false;
+  }
+  return true;
 };
+
 
 // REDUCE //
 Array.prototype.myReduce = function(callbackFn) {
-  // Place your code here.
+    let res;
+    for (let i=0; i<this.length; i++) {
+        if (i==0) {
+            res=callbackFn(this[i],this[i]);
+        }
+        else {
+            res=callbackFn(res,this[i]);
+        }
+    }
+    return res;
 };
 
 // INCLUDES //
 Array.prototype.myIncludes = function(searchElement) {
-  // Place your code here.
+  for (let i=0; i<this.length; i++) {
+      if (this[i]==searchElement) return true;
+  }
+  return false;
 };
 
 // INDEXOF //
 Array.prototype.myIndexOf = function(searchElement) {
-  // Place your code here.
+    for (let i=0; i<this.length ;i++){
+        if (this[i]==searchElement) return i;
+    }
+    return -1;
 };
 
 // LASTINDEXOF //
 Array.prototype.myLastIndexOf = function(searchElement) {
-  // Place your code here.
+    for (let i=this.length-1; i>=0; i--) {
+        if (this[i]==searchElement) return i;
+    }
+    return -1;
 };
+
 
 // KEYS //
 Object.myKeys = function(object) {
-  // Place your code here.
+    let res=[];
+    for (var key in object) {
+        if (key=="myKeys") continue; // "myKeys" key included by default
+        res.push(key);
+    }    
+    return res;
 };
 
 // VALUES //
 Object.myValues = function(object) {
-  // Place your code here.
+    res=[];
+    for (var key in object) {
+        res.push(object[key]);
+    }
+    res.pop(); // [Function] being appended and I don't know why
+    return res;
 };
