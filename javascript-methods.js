@@ -40,8 +40,13 @@ Array.prototype.mySome = function(callbackFn) {
 
 // EVERY //
 Array.prototype.myEvery = function(callbackFn) {
-  // Place your code here.
+  for (let i=0; i<this.length; i++){
+      if (this[i]==undefined) continue;
+      if (!callbackFn(this[i])) return false;
+  }
+  return true;
 };
+
 
 // REDUCE //
 Array.prototype.myReduce = function(callbackFn) {
