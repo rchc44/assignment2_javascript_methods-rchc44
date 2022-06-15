@@ -30,8 +30,13 @@ Array.prototype.myFilter = function(callbackFn) {
 
 // SOME //
 Array.prototype.mySome = function(callbackFn) {
-  // Place your code here.
+  for (let i=0; i<this.length; i++) {
+      if (this[i]==undefined) continue;
+      if (callbackFn(this[i])) return true;
+  }
+  return false;
 };
+
 
 // EVERY //
 Array.prototype.myEvery = function(callbackFn) {
